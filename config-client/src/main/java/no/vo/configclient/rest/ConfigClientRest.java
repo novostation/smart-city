@@ -1,3 +1,4 @@
+/*
 package no.vo.configclient.rest;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -25,3 +26,4 @@ public class ConfigClientRest
 		return "applicationName: " + applicationName + "\t eurekaServers:" + eurekaServers + "\t port: " + port;
 	}
 }
+*/
