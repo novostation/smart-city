@@ -28,4 +28,4 @@ hs_err_pid*
 /service-consumer-ribbon/target
 /service-eureka-7002/target
 **/target
-/config-client/*.iml
+*.iml
