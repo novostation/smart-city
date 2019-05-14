@@ -1,6 +1,6 @@
 spring:
   application:
-    name: abcd
+    name: config
 
 server:
   port: 7002
