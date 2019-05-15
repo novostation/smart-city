@@ -1,7 +1,9 @@
 server:
   port: 80
-  
-  
+
+spring:
+  application:
+    name: ribbon-consumer
 eureka:
   client:
     register-with-eureka: false
