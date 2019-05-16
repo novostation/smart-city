@@ -1,13 +1,26 @@
 package no.vo.common;
 
-public class TestParam {
+import com.alibaba.fastjson.JSON;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class User {
 
     private int id;
     private String name;
 
-    public TestParam(int id, String name) {
+    public User(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public static String list() {
+        List<User> list = new ArrayList<>();
+        for(int i=0;i<5;i++){
+            list.add(new User(i,"name"+i));
+        }
+       return JSON.toJSONString(list);
     }
 
     public int getId() {
@@ -26,10 +39,6 @@ public class TestParam {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "TestParam [id=" + id + ", name=" + name + "]";
-    }
 
 
 }
