@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProviderController
 {
 
-	@RequestMapping(value = "/dept/get/{id}", method = RequestMethod.GET)
-	//一旦调用服务方法失败并抛出了错误信息后，会自动调用@HystrixCommand标注好的fallbackMethod调用类中的指定方法
-	@HystrixCommand(fallbackMethod = "addServiceFallback")
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	@HystrixCommand(fallbackMethod = "addServiceFallback") //一旦调用服务方法失败并抛出了错误信息后，会自动调用@HystrixCommand标注好的fallbackMethod调用类中的指定方法
 	public String get()
 	{
 
