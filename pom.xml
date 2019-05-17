@@ -22,8 +22,11 @@
         <module>service-provider-hystrix</module>
         <module>service-gatewway</module>
         <module>service-gateway-limit</module>
+        <module>service-gateway-nacos</module>
         <module>config-client</module>
         <module>config-server</module>
+        <module>service-nacos-producer-8001</module>
+        <module>service-nacos-producer-8002</module>
     </modules>
 
     <properties>

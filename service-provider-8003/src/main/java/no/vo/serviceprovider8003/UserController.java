@@ -1,5 +1,6 @@
 package no.vo.serviceprovider8003;
 
+import no.vo.common.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -16,7 +17,7 @@ public class UserController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list() {
-        return "ServiceProviderApplication8003";
+        return "ServiceProviderApplication8003 <br>"+User.list();
     }
 
 

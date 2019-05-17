@@ -6,7 +6,7 @@ spring:
     name: feign-web
 feign:
   hystrix:
-    enabled: true #默认为false，如果想用断路由，要打开这个设置
+    enabled: true #榛樿涓篺alse锛屽鏋滄兂鐢ㄦ柇璺敱锛岃鎵撳紑杩欎釜璁剧疆
 
 eureka:
   client:

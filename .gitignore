@@ -22,10 +22,5 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /.idea
-/smart-city.iml
-/service-gateway-limit/target
-/service-eureka-7001/target
-/service-consumer-ribbon/target
-/service-eureka-7002/target
 **/target
 *.iml

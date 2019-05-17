@@ -12,7 +12,20 @@ eureka:
   instance:
     instance-id: producer-server8001-hystrix   #自定义hystrix相关的服务名称信息
     prefer-ip-address: true     #访问路径可以显示IP地址
-      
+
+
+hystrix:
+  command:
+     default: #所有方法有效
+        execution:
+           isolation:
+              thread:
+                 timeoutInMilliseconds: 2000 #默认1秒：（方法上记得要加上@HystrixCommand，否则无效）：
+     listUserMethod: #方法名称为listUserMethod有效
+        execution:
+           isolation:
+              thread:
+                 timeoutInMilliseconds: 5000 #配置具体方法的超时时间
 info:
   app.name: smartcity
   company.name: novo
