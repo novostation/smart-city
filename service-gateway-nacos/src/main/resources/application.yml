@@ -3,15 +3,15 @@ server:
 
 spring:
   application:
-    name: gateway
+    name: service-gateway-nacos
   cloud:
     gateway:
       discovery:
         locator:
-          enabled: true  #±íÃ÷gateway¿ªÆô·şÎñ×¢²áºÍ·¢ÏÖµÄ¹¦ÄÜ£¬²¢ÇÒspring cloud gateway×Ô¶¯¸ù¾İ·şÎñ·¢ÏÖÎªÃ¿Ò»¸ö·şÎñ´´½¨ÁËÒ»¸örouter£¬Õâ¸örouter½«ÒÔ·şÎñÃû¿ªÍ·µÄÇëÇóÂ·¾¶×ª·¢µ½¶ÔÓ¦µÄ·şÎñ¡£
-          lowerCaseServiceId: true   #ÊÇ½«ÇëÇóÂ·¾¶ÉÏµÄ·şÎñÃûÅäÖÃÎªĞ¡Ğ´£¨ÒòÎª·şÎñ×¢²áµÄÊ±ºò£¬Ïò×¢²áÖĞĞÄ×¢²áÊ±½«·şÎñÃû×ª³É´óĞ´µÄÁË£©£¬±ÈÈçÒÔ/service-hi/*µÄÇëÇóÂ·¾¶±»Â·ÓÉ×ª·¢µ½·şÎñÃûÎªservice-hiµÄ·şÎñÉÏ¡£
-          filters:
-            - StripPrefix=1  #GatewayÄ¬ÈÏ×ª·¢ÊÇÈ«Â·¾¶µÄ£¬ÕâÀïµÄstripPrefixÄ¬ÈÏÎªtrue£¬Ò²¾ÍÊÇËùÓĞ/demo/xxxxµÄÇëÇó×ª·¢¸øhttp://demo.com.cn/xxxx ,È¥³ıµôdemoÇ°×º
+          enabled: true  #è¡¨æ˜gatewayå¼€å¯æœåŠ¡æ³¨å†Œå’Œå‘ç°çš„åŠŸèƒ½ï¼Œå¹¶ä¸”spring cloud gatewayè‡ªåŠ¨æ ¹æ®æœåŠ¡å‘ç°ä¸ºæ¯ä¸€ä¸ªæœåŠ¡åˆ›å»ºäº†ä¸€ä¸ªrouterï¼Œè¿™ä¸ªrouterå°†ä»¥æœåŠ¡åå¼€å¤´çš„è¯·æ±‚è·¯å¾„è½¬å‘åˆ°å¯¹åº”çš„æœåŠ¡ã€‚
+          lowerCaseServiceId: true   #æ˜¯å°†è¯·æ±‚è·¯å¾„ä¸Šçš„æœåŠ¡åé…ç½®ä¸ºå°å†™ï¼ˆå› ä¸ºæœåŠ¡æ³¨å†Œçš„æ—¶å€™ï¼Œå‘æ³¨å†Œä¸­å¿ƒæ³¨å†Œæ—¶å°†æœåŠ¡åè½¬æˆå¤§å†™çš„äº†ï¼‰ï¼Œæ¯”å¦‚ä»¥/service-hi/*çš„è¯·æ±‚è·¯å¾„è¢«è·¯ç”±è½¬å‘åˆ°æœåŠ¡åä¸ºservice-hiçš„æœåŠ¡ä¸Šã€‚
+          #filters:
+            #- StripPrefix=1  #è·¯å¾„æˆªå–  StripPrefix=2å°±ä»£è¡¨æˆªå–è·¯å¾„çš„ä¸ªæ•°ï¼Œè¯·æ±‚/name/bar/fooåç«¯åŒ¹é…åˆ°çš„è¯·æ±‚è·¯å¾„å°±ä¼šå˜æˆhttp://nameservice/foo
     nacos:
       config:
         server-addr: 127.0.0.1:8848

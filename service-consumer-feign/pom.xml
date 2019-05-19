@@ -8,32 +8,37 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>no.vo</groupId>
-    <artifactId>service-gateway-eureka-limit</artifactId>
+    <artifactId>service-consumer-feign</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>service-gateway-eureka-limit</name>
+    <name>service-consumer-feign</name>
     <description>Demo project for Spring Boot</description>
+
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>service-common</artifactId>
+            <groupId>no.vo</groupId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
 </project>

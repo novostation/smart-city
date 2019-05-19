@@ -1,0 +1,38 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: service-gateway-consul
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+#      discovery:
+#        ip-address: ${HOST_ADDRESS:localhost}
+#        port: ${SERVER_PORT:${server.port}}
+#        #healthCheckPath: /health
+#        healthCheckInterval: 15s
+#        instance-id: gateway-server-${server.port}
+#        service-name: gateway-server
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      default-filters:
+        - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+      routes:
+        - id: service-provider-consul
+          uri: lb://SERVICE-PROVIDER-CONSUL  # service-provider-consul
+          #order: 8000
+          predicates:
+            - Path=/user/**
+#          filters:
+#            - StripPrefix=1
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+#    org.springframework.http.server.reactive: DEBUG
+#    org.springframework.web.reactive: DEBUG
+#    reactor.ipc.netty: DEBUG

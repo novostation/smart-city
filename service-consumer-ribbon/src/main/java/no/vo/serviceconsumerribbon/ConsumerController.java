@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class ConsumerController
 {
 
-	private static final String REST_URL_PREFIX = "http://PRODUCER-SERVER";
+	private static final String REST_URL_PREFIX = "http://USER-SERVER";
 
 	@Autowired
 	private RestTemplate restTemplate;

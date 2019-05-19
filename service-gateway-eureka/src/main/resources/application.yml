@@ -2,45 +2,40 @@ server:
   port: 9001
 spring:
   application:
-    name: service-gateway-eureka-limit
-  redis:
-    host: 127.0.0.1
-    password: 123456
-    port: 6379
-  cloud:        # spring cloud gateway 路由配置方式
+    name: service-gateway-eureka
+  cloud:
     gateway:
       discovery:      #是否与服务发现组件进行结合，通过 serviceId(必须设置成大写) 转发到具体的服务实例。默认为false，设为true便开启通过服务中心的自动根据 serviceId 创建路由的功能。
         locator:      #路由访问方式：http://Gateway_HOST:Gateway_PORT/大写的serviceId/**，其中微服务应用名默认大写访问。
           enabled: true  #gateway开启服务注册和发现的功能，并且spring cloud gateway自动根据服务发现为每一个服务创建了一个router，# 这个router将以服务名开头的请求路径转发到对应的服务
+          lowerCaseServiceId: true #小写serviceId
       routes:
         - id: USER-SERVER                  #网关路由到服务PRODUCER-SERVER
           uri: lb://USER-SERVER           #lb://开头（lb代表从注册中心获取服务），后面接的就是你需要转发到的服务名称
           predicates:
-            - Path=/user
+          - Path=/user-server/**
+          #- Method=GET
           filters:  # 请求过滤filter，为一个数组，每个filter都会顺序执行
-            - name: RequestRateLimiter  #限流  名称必须是RequestRateLimiter  过滤filter名称，常用的有Hystrix断路由，RequestRateLimiter限流，StripPrefix截取请求url
-              args:
-                key-resolver: "#{@ipKeyResolver}"  #使用SpEL按名称引用bean
-                redis-rate-limiter.replenishRate: 1  #允许用户每秒处理多少个请求
-                redis-rate-limiter.burstCapacity: 1  #令牌桶的容量，允许在一秒钟内完成的最大请求数
-
+            #- StripPrefix=1  #路径截取  StripPrefix=2就代表截取路径的个数，请求/name/bar/foo后端匹配到的请求路径就会变成http://nameservice/foo
+            #- PrefixPath=/mypath  #与StripPrefix 正相反
+          #- Hystrix=authHystrixCommand
+          - name: Hystrix
+            args:
+              name: authHystrixCommand  #HystrixCommand的名字
+              fallbackUri: forward:/hystrixTimeout
 
 
 
 logging:
   level:
-    root: debug
     org.springframework.cloud.gateway: trace
-    org.springframework.http.server.reactive: debug
-    org.springframework.web.reactive: debug
-    reactor.ipc.netty: debug
+    #org.springframework.http.server.reactive: debug
+    #org.springframework.web.reactive: debug
+    #reactor.ipc.netty: debug
 
 
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
-
-feign:
-  hystrix:
-    enabled: true
+      defaultZone: http://eureka7001.com:7001/eureka/
+      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/

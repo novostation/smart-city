@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>no.vo</groupId>
-    <artifactId>service-gateway-eureka-limit</artifactId>
+    <artifactId>service-gateway-consul</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>service-gateway-eureka-limit</name>
+    <name>service-gateway-consul</name>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
@@ -18,22 +18,37 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
+
+       <!-- 依赖于webflux，必须引入-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
+        <!--服务发现组件，排除web依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+            <!--<version>2.0.0.M6</version>-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--//kotlin依赖-->
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+           <!-- <version>${kotlin.version}</version>-->
+            <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-reflect</artifactId>
+            <!--<version>${kotlin.version}</version>-->
+            <optional>true</optional>
         </dependency>
     </dependencies>
+
 </project>
