@@ -17,6 +17,15 @@
         <module>service-gateway-nacos</module>
         <module>config-client</module>
         <module>config-server</module>
+        <module>service-consumer-consul</module>
+        <module>service-consumer-feign</module>
+        <module>service-gateway-consul</module>
+        <module>service-gateway-eureka</module>
+        <module>service-provider-consul</module>
+        <module>service-provider-eureka</module>
+        <module>service-provider-nacos</module>
+        <module>service-register-eureka</module>
+        <module>config-client-nacos</module>
     </modules>
 
     <properties>

@@ -1,0 +1,15 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: alibaba-service-nacos-producer
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+

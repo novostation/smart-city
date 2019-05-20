@@ -1,0 +1,13 @@
+server:
+  port: 8002
+spring:
+  profiles: dev
+  application:
+    name: alibaba-nacos-config-client   #spring.application.name(不包含后缀)值必须与Nacos中创建的配置Data Id(Data Id=alibaba-nacos-config-client.yaml包含后缀)匹配
+
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml  # yaml properties
+        group: DEFAULT_GROUP
