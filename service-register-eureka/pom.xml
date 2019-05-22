@@ -13,13 +13,6 @@
     <name>service-register-eureka</name>
     <description>Demo project for Spring Boot</description>
 
-
-    <properties>
-        <dockerfile.maven.version>1.4.0</dockerfile.maven.version>
-        <docker.registry.name.prefix>192.168.71.128:80/galaxy</docker.registry.name.prefix>
-        <docker.image.prefix>demo</docker.image.prefix> <!--镜像前缀，随便取-->
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

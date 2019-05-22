@@ -3,7 +3,7 @@ server:
 spring:
   profiles: dev
   application:
-    name: alibaba-nacos-config-client   #spring.application.name(不包含后缀)值必须与Nacos中创建的配置Data Id(Data Id=alibaba-nacos-config-client.yaml包含后缀)匹配
+    name: alibaba-nacos-config-client   #spring.application.name(涓嶅寘鍚悗缂�)鍊煎繀椤讳笌Nacos涓垱寤虹殑閰嶇疆Data Id(Data Id=alibaba-nacos-config-client.yaml鍖呭惈鍚庣紑)鍖归厤
 
   cloud:
     nacos:
