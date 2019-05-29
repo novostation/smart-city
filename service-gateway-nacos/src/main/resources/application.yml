@@ -1,19 +1,55 @@
 server:
-  port: 9001
+  port: 9000
 
 spring:
   application:
     name: service-gateway-nacos
   cloud:
     gateway:
+      httpclient:
+        ssl:
+          useInsecureTrustManager: true  #开启https转发
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedHeaders: "*"
+            allowedOrigins: "*"
+            allowedMethods:
+             - GET
+               POST
+               DELETE
+               PUT
+               OPTION
       discovery:
         locator:
           enabled: true  #表明gateway开启服务注册和发现的功能，并且spring cloud gateway自动根据服务发现为每一个服务创建了一个router，这个router将以服务名开头的请求路径转发到对应的服务。
           lowerCaseServiceId: true   #是将请求路径上的服务名配置为小写（因为服务注册的时候，向注册中心注册时将服务名转成大写的了），比如以/service-hi/*的请求路径被路由转发到服务名为service-hi的服务上。
-          #filters:
-            #- StripPrefix=1  #路径截取  StripPrefix=2就代表截取路径的个数，请求/name/bar/foo后端匹配到的请求路径就会变成http://nameservice/foo
+#          filters:
+#            - StripPrefix=1  #路径截取  StripPrefix=2就代表截取路径的个数，请求/name/bar/foo后端匹配到的请求路径就会变成http://nameservice/foo
+      routes:
+        - id: neo_route
+          uri: http://192.168.5.16:8080
+          predicates:
+          - Path=/Bds/**
+
+        - id: arcgis
+          uri: https://192.168.5.77:6443
+          predicates:
+          - Path=/arcgis/**
+
+
+
     nacos:
       config:
-        server-addr: 127.0.0.1:8848
+        server-addr: 192.168.5.155:80
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 192.168.5.155:80
+        namespace: 3dd14490-0d15-48f9-81a7-a03068ecff66
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: trace
+    org.springframework.http.server.reactive: debug
+    org.springframework.web.reactive: debug
+    reactor.ipc.netty: debug
