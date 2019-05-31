@@ -31,13 +31,20 @@ spring:
           uri: http://192.168.5.16:8080
           predicates:
           - Path=/Bds/**
-
-        - id: arcgis
+        #转发到https
+        - id: arcgis-https
           uri: https://192.168.5.77:6443
           predicates:
           - Path=/arcgis/**
 
-
+         #隐藏路径
+        - id: servicename
+          uri: http://192.168.5.221:6080
+          predicates:
+          - Path=/servicename/**
+          filters:
+          - RewritePath=/servicename/(?<segment>.*), /$\{segment}
+          - PrefixPath=/arcgis
 
     nacos:
       config:

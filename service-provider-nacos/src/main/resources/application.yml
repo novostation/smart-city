@@ -1,0 +1,10 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: alibaba-service-nacos-producer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.5.155:80
+        namespace: 3dd14490-0d15-48f9-81a7-a03068ecff66
